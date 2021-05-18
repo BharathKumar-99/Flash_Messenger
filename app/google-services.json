@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "323561403410",
+    "project_id": "flash-messenger-99180",
+    "storage_bucket": "flash-messenger-99180.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323561403410:android:b737fd153a0403e22994cb",
+        "android_client_info": {
+          "package_name": "com.bharath.flashmessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323561403410-rsvsi4t0onjj80har52le11opbfuomtj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bharath.flashmessenger",
+            "certificate_hash": "7093dd1903f9d2345d9abe49c3c00a9510665b63"
+          }
+        },
+        {
+          "client_id": "323561403410-uasvkro5njl78ie1n0ft56drh8gp16gq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHupxogrbfptpQp-d9hhtZ4AFROQxJkL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323561403410-uasvkro5njl78ie1n0ft56drh8gp16gq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

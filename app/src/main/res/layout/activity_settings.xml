@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".util.Settings">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+
+        app:title="Settings"
+        app:titleTextColor="@color/purple_500" />
+
+    <TextView
+        android:id="@+id/wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:drawablePadding="20dp"
+        android:gravity="center|start"
+        android:text="Wallpaper"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:drawableLeftCompat="@drawable/ic_baseline_wallpaper_24" />
+
+    <TextView
+        android:id="@+id/editprofile"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:drawablePadding="20dp"
+        android:gravity="center|start"
+        android:text="Edit Profile"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:drawableLeftCompat="@drawable/ic_baseline_person_24" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="450dp" />
+
+    <TextView
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_baseline_power_settings_new_24"
+        android:drawablePadding="20dp"
+        android:drawingCacheQuality="high"
+        android:gravity="fill"
+        android:paddingLeft="100dp"
+        android:text="Logout"
+        android:textColor="@color/purple_500"
+        android:textSize="34sp" />
+
+</LinearLayout>
