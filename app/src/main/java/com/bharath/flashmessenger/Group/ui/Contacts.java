@@ -1,6 +1,7 @@
 package com.bharath.flashmessenger.Group.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,9 +25,12 @@ ImageButton back;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts2);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar7);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        getSupportActionBar().setTitle("Select Contact");
 
-
-        back=findViewById(R.id.back);
        recyclerView=findViewById(R.id.rv);
         ContactViewModel viewModel=new ViewModelProvider(this).get(ContactViewModel.class);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -40,10 +44,6 @@ ImageButton back;
 
         });
 
-back.setOnClickListener(v->{
-    Intent intent=new Intent(this, MainActivity.class);
-    startActivity(intent);
-    finishAffinity();
-});
+
     }
 }

@@ -1,4 +1,4 @@
-package com.bharath.flashmessenger.Group.Repo;
+package com.bharath.flashmessenger.util.repo;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +21,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactRepo {
+public class Callrepoadd {
     FirebaseAuth auth=FirebaseAuth.getInstance();
     String uid = auth.getUid();
     FirebaseFirestore db = FirebaseFirestore.getInstance();

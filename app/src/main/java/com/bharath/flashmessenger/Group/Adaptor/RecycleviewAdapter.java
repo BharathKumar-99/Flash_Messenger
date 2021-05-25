@@ -1,6 +1,7 @@
 package com.bharath.flashmessenger.Group.Adaptor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bharath.flashmessenger.Group.ViewModel.ContactViewModel;
+import com.bharath.flashmessenger.MainActivity;
 import com.bharath.flashmessenger.R;
 import com.bharath.flashmessenger.Setup.Model.Selectormodel;
+import com.bharath.flashmessenger.util.repo.Callrepoadd;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -48,6 +51,14 @@ public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.
         holder.addtocontact.setOnClickListener(v->{
             ContactViewModel contactViewModel=new ContactViewModel();
             contactViewModel.uploadtofriendlist(contacts.get(position).getUid(),context);
+            Intent intent=new Intent(context, MainActivity.class);
+            context.startActivity(intent);
+        });
+        holder.call.setOnClickListener(v->{
+            Callrepoadd repo=new Callrepoadd();
+            repo.friendlist(contacts.get(position).getUid(),context);
+            Intent intent=new Intent(context, MainActivity.class);
+            context.startActivity(intent);
         });
     }
 
@@ -62,12 +73,14 @@ public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.
 
     public class viewHolder extends RecyclerView.ViewHolder {
         ImageView pic;
-        ImageButton addtocontact;
+        ImageButton addtocontact,call;
         TextView name;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             pic=itemView.findViewById(R.id.profile_image);
             name=itemView.findViewById(R.id.contactname);
             addtocontact=itemView.findViewById(R.id.addtocontact);
+            call=itemView.findViewById(R.id.addtocontact2);
+
         }
 }}

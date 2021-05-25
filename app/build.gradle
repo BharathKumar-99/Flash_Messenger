@@ -74,4 +74,9 @@ dependencies {
     implementation("androidx.camera:camera-view:1.0.0-alpha24")
     // If you want to additionally use the CameraX Extensions library
     implementation("androidx.camera:camera-extensions:1.0.0-alpha24")
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+    implementation 'com.devlomi:circularstatusview:1.0.1'
+    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+
+
 }

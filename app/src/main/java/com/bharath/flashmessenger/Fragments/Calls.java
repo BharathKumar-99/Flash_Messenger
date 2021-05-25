@@ -1,66 +1,98 @@
 package com.bharath.flashmessenger.Fragments;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bharath.flashmessenger.Adapter.CallsRecycle;
+import com.bharath.flashmessenger.Adapter.HomeRecycleAdapter;
+import com.bharath.flashmessenger.Group.ui.Contacts;
 import com.bharath.flashmessenger.R;
+import com.bharath.flashmessenger.ViewModel.CallsViewModel;
+import com.bharath.flashmessenger.ViewModel.HomeViewModel;
+import com.bharath.flashmessenger.util.Settings;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Calls#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Calls extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Calls() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Calls.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Calls newInstance(String param1, String param2) {
-        Calls fragment = new Calls();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calls, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_calls, container, false);
+
+        FloatingActionButton add =root. findViewById(R.id.floatingActionButton);
+        TextView text =root. findViewById(R.id.stocktext);
+        RecyclerView recyclerView=root.findViewById(R.id.callrecycle);
+        add.setOnClickListener(v -> {
+            Intent intent=new Intent(getContext(), Contacts.class);
+            startActivity(intent);
+        });
+
+        CallsViewModel viewModel=new ViewModelProvider(this).get(CallsViewModel.class);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager. VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        text.setText("Click on the add button to start calling");
+        viewModel.getcalls().observe(getViewLifecycleOwner(),contr->{
+            CallsRecycle homeAdapter=new CallsRecycle(contr,getContext());
+            recyclerView.setAdapter(homeAdapter);
+            homeAdapter.notifyDataSetChanged();
+            text.setVisibility(View.GONE);
+
+
+
+
+
+        });
+
+        return root;
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.mainmenu, menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.search:
+
+                return true;
+            case R.id.settings:
+                Intent intent=new Intent(getContext(), Settings.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

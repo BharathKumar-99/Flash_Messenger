@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/timeed">
 
     </TableRow>
 
@@ -24,7 +24,7 @@
         android:id="@+id/namer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="Name"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -38,18 +38,32 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:cropToPadding="true"
         android:padding="1dp"
         android:src="@drawable/boy"
         app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp"
+        app:civ_border_width="0dp"
         app:civ_circle_background_color="#00B8D4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.devlomi.circularstatusview.CircularStatusView
+        android:id="@+id/wheel"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:portion_color="@color/black"
+        app:portion_spacing="4dp"
+        app:portion_width="4dp"
+        app:portions_count="8" />
+
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/timeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -60,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/namer2" />
 
     <View
-        android:layout_width="2dp"
+        android:layout_width="1dp"
         android:layout_height="0dp"
         android:layout_marginStart="25dp"
         android:background="#000000"

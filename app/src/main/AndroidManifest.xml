@@ -3,15 +3,31 @@
     package="com.bharath.flashmessenger">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
+        android:screenOrientation="portrait"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlashMessenger.NoActionBar">
-
+        <activity android:name=".util.UploadStatusPreview"></activity>
+        <activity android:name=".util.uploadStatus" />
         <activity android:name=".Chatroom.ui.Chatroom">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -27,7 +43,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bharath.flashmessenger.MainActivity" />
         </activity>
-        <activity android:name=".Group.ui.Contacts" />
+        <activity android:name=".Group.ui.Contacts">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bharath.flashmessenger.MainActivity" />
+        </activity>
         <activity android:name=".Setup.ui.ProfileSetup" />
         <activity android:name=".Setup.ui.Otp" />
         <activity android:name=".Setup.ui.Login">
@@ -42,7 +62,5 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.FlashMessenger.NoActionBar" />
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 </manifest>

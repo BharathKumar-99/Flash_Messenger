@@ -1,10 +1,12 @@
 package com.bharath.flashmessenger.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,12 +15,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bharath.flashmessenger.Adapter.StatusRecycle;
 import com.bharath.flashmessenger.R;
 import com.bharath.flashmessenger.Setup.Model.Selectormodel;
 import com.bharath.flashmessenger.ViewModel.StatusViewModel;
+import com.bharath.flashmessenger.util.UploadStatusPreview;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class Status extends Fragment {
@@ -42,20 +47,29 @@ public class Status extends Fragment {
         RecyclerView recyclerView=root.findViewById(R.id.statusrv);
         StatusViewModel viewModel=new ViewModelProvider(this).get(StatusViewModel.class);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager. VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
     viewModel.getname().observe(getViewLifecycleOwner(),model->{
         if (model != null) {
             for (Selectormodel models:model){
                 Name.setText(models.getName());
-                Glide.with(getContext()).load(models.getprofile()).into(profile);
+                Glide.with(Objects.requireNonNull(getContext())).load(models.getprofile()).into(profile);
             }
         }
     });
 
         view.setOnClickListener(v->{
-viewModel.statusupload(getContext());
+            Intent intent=new Intent(getContext(), UploadStatusPreview.class);
+            startActivity(intent);
         });
 
-
+    viewModel.getStatus().observe(getViewLifecycleOwner(),statusm -> {
+        StatusRecycle statusRecycle=new StatusRecycle(statusm,getContext());
+        recyclerView.setAdapter(statusRecycle);
+        statusRecycle.notifyDataSetChanged();
+});
 
 
 

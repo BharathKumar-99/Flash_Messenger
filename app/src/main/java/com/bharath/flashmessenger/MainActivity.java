@@ -1,5 +1,6 @@
 package com.bharath.flashmessenger;
 
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -24,7 +25,9 @@ import com.bharath.flashmessenger.ui.main.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private final String[] REQUIRED_PERMISSIONS = new String[]{"android.permission.CAMERA",
-            "android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE"};
+            "android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE",
+            "android.permission.RECORD_AUDIO", "android.permission.READ_PHONE_STATE","Manifest.permission.CALL_PHONE"
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
